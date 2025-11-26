@@ -20,17 +20,18 @@ This project is my deep dive into modern backend engineering — building, deplo
 
 ## Architecture Overview
 
-The platform is structured around loosely coupled microservices — each one handling a specific domain and communicating via REST/gRPC.
+The project is structured around loosely coupled microservices — each one handling a specific domain and communicating via REST/gRPC.
 
-|                                                          |
-|                  [ API Gateway ]                         |
-|                        |                                 |
-|----------------------------------------------------------|
-|  |         |         |          |               |        |
-|UserSvc  AuthSvc   TaskSvc   PaymentSvc   NotificationSvc |
-|----------------------------------------------------------|
-API Gateway:
-1. UserSvc
+```mermaid
+flowchart TD
+    API[API Gateway]
+    API --> UserSvc
+    API --> AuthSvc
+    API --> TaskSvc
+    API --> PaymentSvc
+    API --> NotificationSvc
+```
+
 
 Each service:
 - Has its own database and Docker container
